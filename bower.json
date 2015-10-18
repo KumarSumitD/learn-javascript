@@ -1,0 +1,38 @@
+{
+  "name": "DIRECTV Lib Modules",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "2.1.1",
+    "jquery-ie": "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js",
+    "underscore": "1.5.2",
+    "angular": "1.3.7",
+    "angular-cookies": "1.3.7",
+    "angular-resource": "1.3.7",
+    "angular-sanitize": "1.3.7",
+    "angular-route": "1.3.7",
+    "angular-moment": "~0.6.0",
+    "bootstrap": "~3.2.0",
+    "fastclick": "~1.0.2",
+    "jquery.cookie": "~1.4.0",
+    "innerscroll": "https://github.com/alexchow/innerscroll/commit/4b225acc39437f552c2cca04446f6944f753e1d8",
+    "jquery.lazyload": "~1.8.5",
+    "quicksand": "~1.2.2",
+    "stickyfloat": "https://github.com/yairEO/stickyfloat/tree/31d44e8d8b43a3ddf5d05e31cb20a75c60705d81",
+    "moment": "~2.5.0",
+    "moment-timezone": "0.0.3",
+    "ng-boilerplate": "https://github.com/hunterloftis/ng-viewmodel/commit/62b796f7f3daccfdb738c101b100a97f7c491fef",
+    "smoothscroll": "~0.0.2",
+    "lodash": "~2.4.1",
+    "simworker": "git://github.com/timdream/simworker.git#93518b601c2d4513391fcfb8fff1921adc614ac7",
+    "head": "http://cdnjs.cloudflare.com/ajax/libs/headjs/1.0.3/head.load.min.js",
+    "malihu-custom-scrollbar-plugin":"3.0.8"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.3.7"
+  },
+  "nonManagedDependencies": {
+    "https://code.google.com/p/jquery-debounce/source/browse/": "~1.0.5",
+    "jquery.pin by Giles": "0.0.0",
+    "jquery.stickysidebar": "deprecated <https://github.com/daviferreira/jquery-sticky-column>"
+  }
+}
