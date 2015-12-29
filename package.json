@@ -36,7 +36,8 @@
     "async": "^0.9.0",
     "node-zookeeper-client": "^0.2.1",
     "curlrequest": "^0.5.2",
-    "monk": "1.0.1"
+    "monk": "1.0.1",
+    "mongodb": "~2.0.33"
   },
   "name": "rentMe",
   "version": "0.0.1",
