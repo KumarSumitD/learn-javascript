@@ -1,16 +1,20 @@
 module.exports = function(app) {
   return {
-    route: '/',
-    // apiCall: {
-    //   path: '/livepuls/home/page', verb: 'put', useStub: false
-    // },
+    route: '/sample',
+    dbCall: {
+      collectionName: 'VolleyBall_Players_Detail',
+      dbQuery: 'find'
+    },
+    apiCall: {
+      path: '/livepuls/home/page', verb: 'put', useStub: false
+    },
     preProcessor: function(req, res) {
       console.log('Home Pre Processor');
     },
     postProcessor: function(req, res) {
       console.log('Home Post Processor');
       res.myModuleData.pageName = 'Home';
-      res.myModuleData.moduleData = res.moduleData;
+      res.myModuleData.dbCallData = res.pageDBCallData;
     }
   };
 };
