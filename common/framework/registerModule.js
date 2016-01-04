@@ -6,6 +6,7 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var config = requireFromRoot('/common/config/config');
 var projectDb = monk(config.db_host + config.project_db);
+var excludes = config.excludes;
 
 module.exports = function(app) {
   var middleware = requireFromRoot('/common/framework/middleware.js')(app);
@@ -32,7 +33,15 @@ module.exports = function(app) {
 
   function iterateApps() {
     glob.sync('./**/*.js', { cwd: process.cwd() + '/app'})
+      .filter(filterExcludes)
       .forEach(function(file) { setupMiniApp(path.join(process.cwd() + '/app', file)); });
+  }
+
+  function filterExcludes(eachApp, index, appObject) {
+    var matches = !excludes.some(function(excludeEl) {
+      return eachApp.indexOf(excludeEl) !== -1;
+    });
+    return matches;
   }
 
   function setupMiniApp(filepath) {

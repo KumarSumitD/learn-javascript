@@ -29,9 +29,9 @@ module.exports = function(app){
       commonDb.doCommonDb(req, res, moduleCall);
 
       function moduleCall() {
-        if(module.apiCall)
+        if(!_.isEmpty(module.apiCall))
           moduleApiCall(req, res, next);
-        else if (module.apiCall)
+        else if (!_.isEmpty(module.dbCall))
           moduleDbCall(req, res, next);
         else next();
       }
@@ -42,7 +42,6 @@ module.exports = function(app){
     return function(req, res, next) {
       var module = req.currentModule;
       module.postProcessor(req, res);
-      console.log(res.myModuleData);
       if(module.isJson)
         res.render(res.myModuleData);
       else
@@ -52,6 +51,7 @@ module.exports = function(app){
 
   //- For connecting with mongo DB from app
   function moduleDbCall(req, res, next){
+    console.log("DB Call");
     var module = req.currentModule;
     if(module.dbCall && module.dbCall.collectionName) {
       var collection = req.projectDb.get(module.dbCall.collectionName);
@@ -65,6 +65,7 @@ module.exports = function(app){
 
   //- For connecting with rest API
   function moduleApiCall(req, res, next){
+    console.log("API Call");
     var defaultApiConfig = {
       path: '',
       verb: 'get',
@@ -77,12 +78,12 @@ module.exports = function(app){
     saCall.set('Accept', 'application/json');
     saCall.end(function(err, response){
       if (!err && response.body) {
-        res.moduleData = response.body;
-        res.moduleData.statusCode = response.statusCode;
+        res.apiData = response.body;
+        res.apiData.statusCode = response.statusCode;
         next();
       } else {
         console.log("There is an error in api call" +err);
-        res.moduleData = err;
+        res.apiData = err;
         next();
       }
     });
