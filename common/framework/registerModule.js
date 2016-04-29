@@ -32,12 +32,16 @@ module.exports = function(app) {
   registerApps();
 
   function iterateApps() {
+    //- Loop thorugh all js file inside and app and choose each mini app
+    console.log('In iterateApps');
     glob.sync('./**/*.js', { cwd: process.cwd() + '/app'})
       .filter(filterExcludes)
       .forEach(function(file) { setupMiniApp(path.join(process.cwd() + '/app', file)); });
   }
 
   function filterExcludes(eachApp, index, appObject) {
+    //- Exclude files which are mentioned in config file
+    console.log('In Filter Exclude');
     var matches = !excludes.some(function(excludeEl) {
       return eachApp.indexOf(excludeEl) !== -1;
     });
@@ -45,6 +49,8 @@ module.exports = function(app) {
   }
 
   function setupMiniApp(filepath) {
+    //- Create an array which hold info about all miniapp
+    console.log('In setupMiniApp');
     var appModule = require(filepath)(app);
     var moduleConfig = _.assign(_.cloneDeep(defaultConfig), appModule);
     var routeLookup = moduleConfig.routeVerb + ':' + moduleConfig.route;
@@ -54,6 +60,8 @@ module.exports = function(app) {
   }
 
   function registerApps() {
+    //- Handle and all route
+    console.log('In registerApps');
     _.each(modules,function(module){
       app[module.routeVerb](module.route, initFunction, middleware.preApiFunc, middleware.doDataFunc, middleware.postApiFunc);
     });

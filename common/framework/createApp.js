@@ -17,12 +17,14 @@ module.exports = function(cfg){
       .set('trust proxy', true)
       .set('view options', {layout:false})
       .set('views', path.join(process.cwd(), '/'))
-      .set('view engine', 'jsx')
-      .engine('jsx', expressReact.createEngine());
+      .set('view engine', config.template_engine);
+
+    if(config.template_engine === 'jsx') app.engine('jsx', expressReact.createEngine());
 
     registerModules(app);
 
     app.listen(config.node_port);
+    console.log('Listening to ' + config.node_port);
   }
 
 };

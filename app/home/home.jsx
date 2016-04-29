@@ -8,7 +8,7 @@ var HomePage = React.createClass({
       <BaseLayout title="Livepuls Home Page">
         <div>This is the {this.props.pageName} Page</div>
         <div id="facebook_login"></div>
-        <script>
+        <script type="text/babel">
           console.log("Facebook");
         </script>
       </BaseLayout>
