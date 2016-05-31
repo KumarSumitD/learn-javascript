@@ -1,5 +1,5 @@
 # learn-javascript
-Project is just created to understand modular node js and explore angular.
+Project is just created to understand Node, Express, Grunt , Unit Test, Angular, React etc. It is a platform to learn about frontend technologies.
 
 Steps to make the project work:-
 
