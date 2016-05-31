@@ -1,5 +1,6 @@
 var path = require('path');
 var registerModules = requireFromRoot('/common/framework/registerModule.js');
+var expressReact = require('express-react-views');
 
 module.exports = function(cfg){
   var config = cfg;
@@ -14,13 +15,16 @@ module.exports = function(cfg){
     var app = require('express')();
     app
       .set('trust proxy', true)
-      .set('view engine', 'jade')
       .set('view options', {layout:false})
-      .set('views', path.join(process.cwd(), '/'));
+      .set('views', path.join(process.cwd(), '/'))
+      .set('view engine', config.template_engine);
+
+    if(config.template_engine === 'jsx') app.engine('jsx', expressReact.createEngine());
 
     registerModules(app);
 
     app.listen(config.node_port);
+    console.log('Listening to ' + config.node_port);
   }
 
 };

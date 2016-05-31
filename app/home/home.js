@@ -9,8 +9,9 @@ module.exports = function(app) {
     },
     postProcessor: function(req, res) {
       console.log('Home Post Processor');
-      res.myModuleData.pageName = 'Home';
-      res.myModuleData.moduleData = res.moduleData;
+      res.myModuleData = {
+        pageName: 'Home'
+      };
     }
   };
 };
