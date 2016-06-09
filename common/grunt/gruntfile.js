@@ -1,3 +1,4 @@
+
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-nodemon');
@@ -24,5 +25,5 @@ module.exports = function(grunt) {
   });
 
   //- Default task
-  grunt.registerTask('startServer', ['shell:killNode','nodemon:startNode']);
+  grunt.registerTask('startServer', ['shell:killNode', 'nodemon:startNode']);
 };
